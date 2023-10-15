@@ -27,7 +27,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const dev_db_url =
-  "mongodb+srv://biblioteca:E0BsP3akZoVN4ldA@cluster0.yozjyex.mongodb.net/?retryWrites=true&w=majority";
+"mongodb+srv://biblioteca:tDb5WpuM93czrZBg@cluster0.ydq520n.mongodb.net/?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
