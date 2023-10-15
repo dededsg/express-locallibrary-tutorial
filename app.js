@@ -96,50 +96,5 @@ const catalogRouter = require("./routes/catalog"); // Import routes for "catalog
 const compression = require("compression");
 
 // Create the Express application object
-const app = express();
-
-// …
-
-app.use(compression()); // Compress all routes
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/catalog", catalogRouter); // Add catalog routes to middleware chain.
-
-// 
-const compression = require("compression");
-const helmet = require("helmet");
-
-// Create the Express application object
-const app = express();
-
-// Add helmet to the middleware chain.
-// Set CSP headers to allow our Bootstrap and Jquery to be served
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
-    },
-  }),
-);
-
-// 
-const compression = require("compression");
-const helmet = require("helmet");
-
-const app = express();
-
-// Set up rate limiter: maximum of twenty requests per minute
-const RateLimit = require("express-rate-limit");
-const limiter = RateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 20,
-});
-// Apply rate limiter to all requests
-app.use(limiter);
-
-// …
 
 module.exports = app;
