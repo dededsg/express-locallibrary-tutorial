@@ -27,7 +27,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const dev_db_url =
-  "mongodb+srv://biblioteca:tDb5WpuM93czrZBg@cluster0.ydq520n.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://biblioteca:E0BsP3akZoVN4ldA@cluster0.yozjyex.mongodb.net/?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
@@ -75,26 +75,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-const debug = require("debug")("author");
-
-// Display Author update form on GET.
-exports.author_update_get = asyncHandler(async (req, res, next) => {
-  const author = await Author.findById(req.params.id).exec();
-  if (author === null) {
-    // No results.
-    debug(`id not found on update: ${req.params.id}`);
-    const err = new Error("Author not found");
-    err.status = 404;
-    return next(err);
-  }
-
-  res.render("author_form", { title: "Update Author", author: author });
-});
-
-const catalogRouter = require("./routes/catalog"); // Import routes for "catalog" area of site
-const compression = require("compression");
-
-// Create the Express application object
 
 module.exports = app;
